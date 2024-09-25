@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XtrayUserInterface"
+        xmlns:res="clr-namespace:XtrayUserInterface.Resources"
         mc:Ignorable="d"
-        Title="Xtray串口设置工具" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="1" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -23,14 +24,29 @@
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
-                <TextBlock Text="接收数据" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
+
+                <TextBlock Text="{Binding Source={x:Static res:Localization.Instance}, Path=receiveData}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
                     <TextBlock.LayoutTransform>
                         <RotateTransform Angle="90"></RotateTransform>
                     </TextBlock.LayoutTransform>
                 </TextBlock>
-                
-                <TextBox x:Name="RecieveData" IsReadOnly="True" Margin="10,10,10,10" Grid.Column="1"/>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox x:Name="ReceiveData" IsReadOnly="True" Margin="10,10,10,10" Grid.Row="0" TextChanged="RecieveData_TextChanged"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Name="saveData" Content="保存接收和发送数据" Margin="1" Grid.Column="1" Click="saveData_Click"></Button>
+                    </Grid>
+                </Grid>
             </Grid>
 
             <Grid Grid.Row="1">
@@ -60,46 +76,71 @@
 
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Content="波特率：" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></Label>
-                <ComboBox Name="Baudrate"  Margin="5" Grid.Row="1" Grid.Column="1"></ComboBox>
-                <Button Name="BaudSet" Content="应用" Margin="3" Grid.Row="1" Grid.Column="2"></Button>
+                <Label Content="Wifi名称：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></Label>
+                <TextBox Name="WifiUserName" Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
+                <Label Content="Wifi密码：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></Label>
+                <PasswordBox Name="WifiPassword" Margin="5" Grid.Row="1" Grid.Column="1"></PasswordBox>
+                <Button Name="WifiSet" Content="应用" Margin="5" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Click="WifiSet_Click"></Button>
 
-                <Label Content="Wifi名称：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></Label>
-                <TextBox Name="WifiUserName" Margin="5" Grid.Row="2" Grid.Column="1"></TextBox>
-                <Label Content="Wifi密码：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></Label>
-                <TextBox Name="WifiPassword" Margin="5" Grid.Row="3" Grid.Column="1"></TextBox>
-                <Button Name="WifiSet" Content="应用" Margin="3" Grid.Row="3" Grid.Column="2"></Button>
-
-                <Label Content="MQTT地址：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></Label>
-                <TextBox Name="MqttAddress" Margin="5" Grid.Row="4" Grid.Column="1"></TextBox>
+                <Label Content="服务器IP：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></Label>
+                <TextBox Name="ServerIP" Margin="5" Grid.Row="2" Grid.Column="1"></TextBox>
+                <Label Content="服务器名称：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></Label>
+                <TextBox Name="ServerName" Margin="5" Grid.Row="3" Grid.Column="1"></TextBox>
+                <Label Content="MQTT用户名：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></Label>
+                <TextBox Name="MqttUserName" Margin="5" Grid.Row="4" Grid.Column="1"></TextBox>
                 <Label Content="MQTT密码：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></Label>
-                <TextBox Name="MqttPassword" Margin="5" Grid.Row="5" Grid.Column="1"></TextBox>
-                <Button Name="MqttSet" Content="应用" Margin="3" Grid.Row="5" Grid.Column="2"></Button>
+                <PasswordBox Name="MqttPassword" Margin="5" Grid.Row="5" Grid.Column="1"></PasswordBox>
+                <Button Name="MqttSet" Content="应用" Margin="3" Grid.Row="2" Grid.RowSpan="4" Grid.Column="2" Click="MqttSet_Click"></Button>
 
-                <Button Name="Reset" Content="重启" Margin="3" Grid.Row="6" Grid.Column="1"></Button>
+                <Button Name="WeightTare" Content="称重归零（请确保X-Tray上无其他物品）" Margin="3" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Click="WeightTare_Click"></Button>
+                <Button Name="Reset" Content="重启系统" Margin="3" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Click="Reset_Click"></Button>
             </Grid>
 
             <Grid Grid.Row="1">
-                <Label Content="端口号：" FontSize="15" Grid.Row="0" Grid.Column="0" Margin="2,4,205,108"/>
-                <ComboBox Name="Portname" Grid.Row="0" Margin="67,4,10,108"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="端口号：" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                    <ComboBox Name="Portname" Grid.Row="0" Grid.Column="1" Margin="5"/>
+
+                    <Label Content="波特率：" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                    <ComboBox x:Name="BaudRate" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="SearchPort" Click="Search_Click" Content="搜索串口" Grid.Column="0" Margin="5"/>
+                    <Button x:Name="ConnectPort" Click="Connect_Click" Content="连接串口" Grid.Column="1" Margin="5"/>
+                </Grid>
                 
-                <Button Name="Connect" Content="连接" Grid.Row="0" Margin="10,80,10,10"/>
-                <Label Content="波特率：" FontSize="15" Grid.Row="0" Grid.Column="0" Margin="2,42,205,70"/>
-                <ComboBox x:Name="BaudRate" Grid.Row="0" Margin="67,42,10,70"/>
             </Grid>
         </Grid>
 
