@@ -145,4 +145,7 @@
   <data name="connectPort" xml:space="preserve">
     <value>连接串口</value>
   </data>
+  <data name="apply" xml:space="preserve">
+    <value>应用</value>
+  </data>
 </root>

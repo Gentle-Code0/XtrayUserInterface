@@ -211,5 +211,15 @@ namespace XtrayUserInterface
                 }
             }
         }
+
+        private void CN_Click(object sender, RoutedEventArgs e)
+        {
+            XtrayUserInterface.Resources.ResourceExtension.Instance.CurrentCulture = "zh-CN";
+        }
+
+        private void EN_Click(object sender, RoutedEventArgs e)
+        {
+            XtrayUserInterface.Resources.ResourceExtension.Instance.CurrentCulture = "en";
+        }
     }
 }

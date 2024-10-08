@@ -118,51 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="title" xml:space="preserve">
-    <value>X-Tray串口设置工具</value>
+    <value>X-Tray Serial Configuration Tool</value>
   </data>
   <data name="receiveData" xml:space="preserve">
-    <value>接收数据</value>
+    <value>Received Data</value>
   </data>
   <data name="sendData" xml:space="preserve">
-    <value>发送数据</value>
+    <value>Sent Data</value>
   </data>
   <data name="saveData" xml:space="preserve">
-    <value>保存接收和发送数据</value>
+    <value>Save received and sent data</value>
   </data>
   <data name="wifiName" xml:space="preserve">
-    <value>Wifi名称：</value>
+    <value>WiFi SSID:</value>
   </data>
   <data name="wifiPwd" xml:space="preserve">
-    <value>Wifi密码：</value>
+    <value>WiFi PWD:</value>
   </data>
   <data name="serverIP" xml:space="preserve">
-    <value>服务器IP：</value>
+    <value>Server IP:</value>
   </data>
   <data name="serverName" xml:space="preserve">
-    <value>服务器名称：</value>
+    <value>Server Name:</value>
   </data>
   <data name="mqttUsername" xml:space="preserve">
-    <value>MQTT用户名：</value>
+    <value>MQTT Username:</value>
   </data>
   <data name="mqttPwd" xml:space="preserve">
-    <value>MQTT密码：</value>
+    <value>MQTT PWD:</value>
   </data>
   <data name="tareButton" xml:space="preserve">
-    <value>称重归零（请确保X-Tray上无其他物品）</value>
+    <value>Tare(Make sure nothing on Tray)</value>
   </data>
   <data name="resetButton" xml:space="preserve">
-    <value>重启系统</value>
+    <value>Reset</value>
   </data>
   <data name="portNumber" xml:space="preserve">
-    <value>端口号：</value>
+    <value>Port:</value>
   </data>
   <data name="baudrate" xml:space="preserve">
-    <value>波特率：</value>
+    <value>Baudrate:</value>
   </data>
   <data name="searchPort" xml:space="preserve">
-    <value>搜索串口</value>
+    <value>Search for Port</value>
   </data>
   <data name="connectPort" xml:space="preserve">
-    <value>连接串口</value>
+    <value>Connect to Port</value>
+  </data>
+  <data name="apply" xml:space="preserve">
+    <value>Apply</value>
   </data>
 </root>

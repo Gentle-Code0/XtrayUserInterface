@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:XtrayUserInterface"
         xmlns:res="clr-namespace:XtrayUserInterface.Resources"
         mc:Ignorable="d"
-        Title="1" Height="600" Width="800" Loaded="Window_Loaded">
+        Title="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=title}" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -25,7 +25,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding Source={x:Static res:Localization.Instance}, Path=receiveData}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
+                <TextBlock Text="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=receiveData}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
                     <TextBlock.LayoutTransform>
                         <RotateTransform Angle="90"></RotateTransform>
                     </TextBlock.LayoutTransform>
@@ -44,7 +44,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Name="saveData" Content="保存接收和发送数据" Margin="1" Grid.Column="1" Click="saveData_Click"></Button>
+                        <Button Name="saveData" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=saveData}" Margin="1" Grid.Column="1" Click="saveData_Click"></Button>
                     </Grid>
                 </Grid>
             </Grid>
@@ -55,7 +55,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="发送数据" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
+                <TextBlock Text="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=sendData}" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
                     <TextBlock.LayoutTransform>
                         <RotateTransform Angle="90"></RotateTransform>
                     </TextBlock.LayoutTransform>
@@ -85,6 +85,8 @@
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -92,24 +94,26 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Content="Wifi名称：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></Label>
+                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=wifiName}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></Label>
                 <TextBox Name="WifiUserName" Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
-                <Label Content="Wifi密码：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></Label>
+                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=wifiPwd}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></Label>
                 <PasswordBox Name="WifiPassword" Margin="5" Grid.Row="1" Grid.Column="1"></PasswordBox>
-                <Button Name="WifiSet" Content="应用" Margin="5" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Click="WifiSet_Click"></Button>
+                <Button Name="WifiSet" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=apply}" Margin="5" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Click="WifiSet_Click"></Button>
 
-                <Label Content="服务器IP：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></Label>
+                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=serverIP}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></Label>
                 <TextBox Name="ServerIP" Margin="5" Grid.Row="2" Grid.Column="1"></TextBox>
-                <Label Content="服务器名称：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></Label>
+                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=serverName}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></Label>
                 <TextBox Name="ServerName" Margin="5" Grid.Row="3" Grid.Column="1"></TextBox>
-                <Label Content="MQTT用户名：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></Label>
+                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=mqttUsername}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></Label>
                 <TextBox Name="MqttUserName" Margin="5" Grid.Row="4" Grid.Column="1"></TextBox>
-                <Label Content="MQTT密码：" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></Label>
+                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=mqttPwd}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></Label>
                 <PasswordBox Name="MqttPassword" Margin="5" Grid.Row="5" Grid.Column="1"></PasswordBox>
-                <Button Name="MqttSet" Content="应用" Margin="3" Grid.Row="2" Grid.RowSpan="4" Grid.Column="2" Click="MqttSet_Click"></Button>
+                <Button Name="MqttSet" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=apply}" Margin="3" Grid.Row="2" Grid.RowSpan="4" Grid.Column="2" Click="MqttSet_Click"></Button>
 
-                <Button Name="WeightTare" Content="称重归零（请确保X-Tray上无其他物品）" Margin="3" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Click="WeightTare_Click"></Button>
-                <Button Name="Reset" Content="重启系统" Margin="3" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Click="Reset_Click"></Button>
+                <Button Name="WeightTare" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=tareButton}" Margin="3" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Click="WeightTare_Click"></Button>
+                <Button Name="Reset" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=resetButton}" Margin="3" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Click="Reset_Click"></Button>
+                <Button Name="CN" Content="中文" Margin="3" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Click="CN_Click"></Button>
+                <Button Name="EN" Content="English" Margin="3" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Click="EN_Click"></Button>
             </Grid>
 
             <Grid Grid.Row="1">
@@ -126,10 +130,10 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="端口号：" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                    <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=portNumber}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.Row="0" Grid.Column="0" Margin="5"/>
                     <ComboBox Name="Portname" Grid.Row="0" Grid.Column="1" Margin="5"/>
 
-                    <Label Content="波特率：" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                    <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=baudrate}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.Row="1" Grid.Column="0" Margin="5"/>
                     <ComboBox x:Name="BaudRate" Grid.Row="1" Grid.Column="1" Margin="5"/>
                 </Grid>
                 <Grid Grid.Row="1">
@@ -137,8 +141,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Name="SearchPort" Click="Search_Click" Content="搜索串口" Grid.Column="0" Margin="5"/>
-                    <Button x:Name="ConnectPort" Click="Connect_Click" Content="连接串口" Grid.Column="1" Margin="5"/>
+                    <Button Name="SearchPort" Click="Search_Click" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=searchPort}" Grid.Column="0" Margin="5"/>
+                    <Button x:Name="ConnectPort" Click="Connect_Click" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=connectPort}" Grid.Column="1" Margin="5"/>
                 </Grid>
                 
             </Grid>
