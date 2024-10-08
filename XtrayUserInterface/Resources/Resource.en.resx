@@ -168,4 +168,13 @@
   <data name="apply" xml:space="preserve">
     <value>Apply</value>
   </data>
+  <data name="wifiTabPageName" xml:space="preserve">
+    <value>WiFi Config</value>
+  </data>
+  <data name="serverTabName" xml:space="preserve">
+    <value>Server Config</value>
+  </data>
+  <data name="otherTabName" xml:space="preserve">
+    <value>Others</value>
+  </data>
 </root>

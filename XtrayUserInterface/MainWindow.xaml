@@ -67,7 +67,7 @@
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -75,45 +75,70 @@
             <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
 
             <Grid Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=wifiName}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></Label>
-                <TextBox Name="WifiUserName" Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
-                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=wifiPwd}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></Label>
-                <PasswordBox Name="WifiPassword" Margin="5" Grid.Row="1" Grid.Column="1"></PasswordBox>
-                <Button Name="WifiSet" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=apply}" Margin="5" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Click="WifiSet_Click"></Button>
-
-                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=serverIP}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></Label>
-                <TextBox Name="ServerIP" Margin="5" Grid.Row="2" Grid.Column="1"></TextBox>
-                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=serverName}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></Label>
-                <TextBox Name="ServerName" Margin="5" Grid.Row="3" Grid.Column="1"></TextBox>
-                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=mqttUsername}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></Label>
-                <TextBox Name="MqttUserName" Margin="5" Grid.Row="4" Grid.Column="1"></TextBox>
-                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=mqttPwd}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></Label>
-                <PasswordBox Name="MqttPassword" Margin="5" Grid.Row="5" Grid.Column="1"></PasswordBox>
-                <Button Name="MqttSet" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=apply}" Margin="3" Grid.Row="2" Grid.RowSpan="4" Grid.Column="2" Click="MqttSet_Click"></Button>
-
-                <Button Name="WeightTare" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=tareButton}" Margin="3" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Click="WeightTare_Click"></Button>
-                <Button Name="Reset" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=resetButton}" Margin="3" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Click="Reset_Click"></Button>
-                <Button Name="CN" Content="中文" Margin="3" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Click="CN_Click"></Button>
-                <Button Name="EN" Content="English" Margin="3" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Click="EN_Click"></Button>
+                <TabControl x:Name="UtilityControl"  Grid.Row="0">
+                    <TabItem Header="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=wifiTabPageName}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=wifiName}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></Label>
+                                <TextBox Name="WifiUserName" Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
+                                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=wifiPwd}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></Label>
+                                <PasswordBox Name="WifiPassword" Margin="5" Grid.Row="1" Grid.Column="1"></PasswordBox>
+                            </Grid>
+                            <Button Name="WifiSet" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=apply}" Margin="5" Grid.Row="1" Click="WifiSet_Click"></Button>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=serverTabName}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=serverIP}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></Label>
+                                <TextBox Name="ServerIP" Margin="5" Grid.Row="0" Grid.Column="1"></TextBox>
+                                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=serverName}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></Label>
+                                <TextBox Name="ServerName" Margin="5" Grid.Row="1" Grid.Column="1"></TextBox>
+                                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=mqttUsername}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></Label>
+                                <TextBox Name="MqttUserName" Margin="5" Grid.Row="2" Grid.Column="1"></TextBox>
+                                <Label Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=mqttPwd}" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></Label>
+                                <PasswordBox Name="MqttPassword" Margin="5" Grid.Row="3" Grid.Column="1"></PasswordBox>
+                            </Grid>
+                            <Button Name="MqttSet" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=apply}" Margin="3" Grid.Row="1" Click="MqttSet_Click"></Button>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=otherTabName}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Button Name="WeightTare" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=tareButton}" Margin="5" Grid.Row="0" Click="WeightTare_Click"></Button>
+                            <Button Name="Reset" Content="{Binding Source={x:Static res:ResourceExtension.Instance}, Path=resetButton}" Margin="5" Grid.Row="1" Click="Reset_Click"></Button>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
             </Grid>
 
             <Grid Grid.Row="1">

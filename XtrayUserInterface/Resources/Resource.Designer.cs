@@ -106,6 +106,15 @@ namespace XtrayUserInterface.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 其他设置.
+        /// </summary>
+        public static string otherTabName {
+            get {
+                return ResourceManager.GetString("otherTabName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 端口号：.
         /// </summary>
         public static string portNumber {
@@ -178,6 +187,15 @@ namespace XtrayUserInterface.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 服务器设置.
+        /// </summary>
+        public static string serverTabName {
+            get {
+                return ResourceManager.GetString("serverTabName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 称重归零（请确保X-Tray上无其他物品）.
         /// </summary>
         public static string tareButton {
@@ -210,6 +228,15 @@ namespace XtrayUserInterface.Resources {
         public static string wifiPwd {
             get {
                 return ResourceManager.GetString("wifiPwd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WiFi设置.
+        /// </summary>
+        public static string wifiTabPageName {
+            get {
+                return ResourceManager.GetString("wifiTabPageName", resourceCulture);
             }
         }
     }
